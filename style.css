@@ -1,0 +1,239 @@
+:root {
+    --schriftgröße: 26px;
+    --bg_darkblue: rgb(5, 23, 30);
+    --bg_lightblue: rgb(8, 32, 41);
+    --padding: 0 50px 0 50px;
+    --color_writing: white;
+
+}
+
+* {
+    margin: 0;
+    font-family: "Caprasimo", sans-serif;
+}
+
+
+
+header,
+footer {
+    width: 100%;
+    height: 150px;
+    background-color: var(--bg_lightblue);
+}
+
+.header-section {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding);
+
+
+}
+
+.fotogram-logo {
+    height: 132px;
+    width: 250px;
+
+}
+
+.container-logo {
+    height: 50px;
+    width: 80px;
+}
+
+h1 {
+    color: white;
+    font-size: 63px;
+}
+
+.fotogram-headline {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    background-color: var(--bg_darkblue);
+    height: 100vh;
+}
+
+.headline-box {
+    display: flex;
+    justify-content: center;
+    padding-top: 130px;
+}
+
+.img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+
+}
+
+.img-container img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    max-width: 200px;
+    border-radius: 21px;
+}
+
+.main-section-img {
+    padding: var(--padding);
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.img-container img:hover {
+
+    box-shadow: 0px 0px 16px 8px rgb(231 226 226 / 50%);
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.lightbox-section {
+
+    position: fixed;
+    inset: 0;
+    background-color: rgba(8, 32, 41, 0.8);
+    z-index: 9999;
+    display: none;
+}
+
+.lightbox-section.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn {
+    height: 40px;
+    width: 40px;
+    color: #000000;
+    background-color: white;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+}
+
+
+
+.lightbox-main img {
+    width: 550px;
+    height: 670px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.lightbox-head {
+    display: flex;
+    width: 550px;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.lightbox-head p {
+    color: var(--color_writing);
+    display: flex;
+    width: 550px;
+    justify-content: center;
+
+}
+
+.lightbox-footer {
+    width: 550px;
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--color_writing);
+    margin-top: 15px;
+}
+
+.lightbox_outer_box {
+    width: 750px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(37 115 145 / 80%);
+    border-radius: 15px;
+    font-size: var(--schriftgröße);
+}
+
+.button {
+    font-size: 35px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.button:hover {
+    color: #0a0a0a;
+}
+
+@media(max-width: 744px) {
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .img-container img {
+        width: 170px;
+        height: 130px;
+    }
+
+
+}
+
+@media(max-width: 652px) {
+    .main-section-img {
+        height: 100vh;
+    }
+
+}
+
+@media(max-width: 523px) {
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .main-section-img {
+        height: 88vh;
+    }
+
+    .img-container img {
+        width: 140px;
+        height: 100px;
+    }
+}
+
+@media(max-width: 425px) {
+
+    .header-section {
+        justify-content: center;
+        padding: 0 25px;
+    }
+
+    .fotogram-logo {
+        height: 132px;
+        width: 200px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+    .img-container img {
+        width: 120px;
+    }
+
+    .main-section-img {
+        padding: 0 25px;
+    }
+}
