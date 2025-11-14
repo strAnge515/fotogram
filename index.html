@@ -10,21 +10,18 @@
         href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Economica:ital,wght@0,400;0,700;1,400;1,700&family=Monsieur+La+Doulaise&family=Mozilla+Headline:wght@200..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Viga&display=swap"
         rel="stylesheet">
 
-    <script src="./scipt.js"></script>
+
     <title>Fotogram</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image">
 </head>
 
 <body>
-    <header>
-        <section class="header-section">
-
-
+    <header class="header-section">
+        <div class="logo">
             <img class="fotogram-logo" src="./assets/Fotogram_Logo.svg" alt="img.Fotogram">
+        </div>
 
-
-
-        </section>
     </header>
     <main>
         <section class="main-section-img">
@@ -32,36 +29,39 @@
                 <h1>Mein Fotoalbum</h1>
             </div>
 
-            <div id="content" class="img-container"></div>
+            <section id="content" class="img-container"></section>
 
         </section>
+
 
     </main>
     <footer>
 
     </footer>
-    <section id="lightbox" class="lightbox-section">
+    <dialog id="lightbox" class="lightbox-section">
         <div class="lightbox_outer_box">
-            <div class="lightbox-head">
+            <header class="lightbox-head">
                 <p id="img-description">name bild</p>
 
                 <button id="closeButtonLightbox" class="close-btn">X</button>
-            </div>
-            <div class="lightbox-main">
+            </header>
+            <section class="lightbox-main">
                 <img id="img-lightbox" src="" alt="bild ">
-            </div>
+            </section>
 
-            <div class="lightbox-footer">
-                <div id="button-left" class="button">&#8592;</div>
-                <div id="img-counter" class="img-count">count</div>
-                <div id="button-right" class="button">&#8594;</div>
-            </div>
+            <footer class="lightbox-footer">
+                <button id="button-left" class="button" onclick="previous()">&#8592;</button>
+                <span id="img-counter"></span>
+                <button id="button-right" class="button" onclick="next()">&#8594;</button>
+            </footer>
         </div>
 
-    </section>
+    </dialog>
+
 
 
 </body>
+<script src="./scipt.js"></script>
 
 
 </html>

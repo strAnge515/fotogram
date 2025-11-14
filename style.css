@@ -12,6 +12,11 @@
     font-family: "Caprasimo", sans-serif;
 }
 
+.logo {
+    max-width: 1000px;
+    width: 100vw;
+}
+
 
 
 header,
@@ -27,8 +32,8 @@ footer {
     height: 150px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 25px;
+    justify-content: center;
+    
 
 
 }
@@ -36,6 +41,7 @@ footer {
 .fotogram-logo {
     height: 132px;
     width: 250px;
+    padding-left: 25px;
 
 }
 
@@ -60,7 +66,17 @@ h1 {
 
 main {
     background: linear-gradient(147deg, #2b2b2b, #bf906c, #747a85);
+    display: flex;
+    justify-content: center;
 
+}
+.column {
+    
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
 }
 
 .headline-box {
@@ -90,6 +106,8 @@ main {
     min-height: calc(100vh - 400px);
     display: flex;
     flex-direction: column;
+    max-width: 1000px;
+    width: 100vw;
 
 }
 
@@ -107,7 +125,7 @@ main {
     /* background-color: rgba(8, 32, 41, 0.8); */
     background: linear-gradient(147deg, rgba(43, 43, 43, 0.6));
     z-index: 9999;
-    display: none;
+    
 }
 
 .lightbox-section.active {
@@ -128,6 +146,9 @@ main {
 .close-btn:hover {
     color: #ffffff;
     background-color: rgb(0, 0, 0);
+     box-shadow: 0px 0px 16px 8px rgb(231 226 226 / 50%);
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 
@@ -179,10 +200,17 @@ main {
     font-size: 35px;
     cursor: pointer;
     user-select: none;
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+
 }
 
 .button:hover {
-    color: #0a0a0a;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+     box-shadow: 0px 0px 16px 8px rgb(231 226 226 / 50%);
+    transform: scale(1.05);
+    transition: 0.3s;
 
 }
 
