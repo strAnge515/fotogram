@@ -61,6 +61,7 @@ function openLightbox(index) {
     lastFocusedButton = document.getElementById("img-lightbox"); //save the focus
     let lightboxImg = document.getElementById("img-lightbox");
     lightbox.showModal();   // show dialog
+    document.body.style.overflow = "hidden";
     lightbox.focus();   // set keyboard focus
     lightboxImg.src = myImgs[index];    // display selected image
     currentIndex = index;
