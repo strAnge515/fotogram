@@ -29,18 +29,22 @@ window.onload = function () {
 function generateImgs() {
 
     let container = document.getElementById("content");
+     
 
     // create figure + button + img for each image
 
-    for (let i = 0; i < myImgs.length; i++) {
+   for (let i = 0; i < myImgs.length; i++) {
+    let capitalizedName = myImgs[i].replace(".jpg", "");
+    capitalizedName = capitalizedName.charAt(0).toUpperCase() + capitalizedName.slice(1);
 
-        container.innerHTML += `<figure class = "img_container">
-                                    <button class= "column">
-                                        <img src ="./img/${myImgs[i]}">
-                                    </button>
-                                </figure>`
-
-    };
+    container.innerHTML += `
+        <figure class="img_container">
+            <button class="column" aria-label="Open image ${capitalizedName}">
+                <img src="./img/${myImgs[i]}" alt="${capitalizedName}">
+            </button>
+        </figure>
+    `;
+}
 };
 
 
