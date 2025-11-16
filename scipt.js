@@ -1,4 +1,4 @@
-let myImgs = ['antarctica.jpg',
+let myImgs = ['antarctica.jpg', // Array of image filenames
     'beach.jpg',
     'bird.jpg',
     'kite-surfing.jpg',
@@ -13,30 +13,24 @@ let myImgs = ['antarctica.jpg',
 ];
 
 
-let currentIndex = 0;
-let lightbox = document.getElementById("lightbox");
+let currentIndex = 0;   // tracks currently displayed image in lightbox
+let lightbox = document.getElementById("lightbox"); // reference to the dialog element
 
 
 
 
 window.onload = function () {
 
-    
-    generateImgs();
-    lightboxPicker();
-    closeBtn ();
-   
-
-
-
+    generateImgs(); // create image elements in the gallery
+    lightboxPicker(); // add click + keyboard (Enter) listeners to images
+    closeBtn(); // set up close button listener
 };
 
 function generateImgs() {
 
     let container = document.getElementById("content");
 
-    // Schleife für alle Bilder, die den Namen augibt, 
-    // div und img container erzeugt und sie mit src und class austattet
+    // create figure + button + img for each image
 
     for (let i = 0; i < myImgs.length; i++) {
 
@@ -49,37 +43,46 @@ function generateImgs() {
     };
 };
 
-// macht die lightbox sichtbar mit einer zusätzlichen Klasse, lädt das Bild ind die lightbox
-// current Index ist ganz oben definiert mit 0
-function lightboxPicker() { // überarbeiten
 
-
+function lightboxPicker() {
     let content = document.getElementById("content");
     let showedImgs = content.getElementsByTagName("img");
-    let lightboxImg = document.getElementById("img-lightbox");
 
     for (let i = 0; i < showedImgs.length; i++) {
+        let parentButton = showedImgs[i].parentElement;
 
-        showedImgs[i].addEventListener("click", function () {
+        // click on image opens lightbox
+        parentButton.addEventListener("click", () => openLightbox(i));
 
-            lightbox.showModal();
-            lightbox.focus();
-
-            lightboxImg.src = showedImgs[i].src;
-
-            currentIndex = i;
-
-            showImageName(i);
-            showCurrentImg();
-
+         // pressing Enter while focused on image opens lightbox
+        parentButton.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                openLightbox(i);
+            };
         });
     };
+};
 
+let lastFocusedButton;
+
+function openLightbox(index) {
+    lastFocusedButton = document.getElementById("img-lightbox"); //save the focus
+
+    let lightboxImg = document.getElementById("img-lightbox");
+
+    lightbox.showModal();   // show dialog
+    lightbox.focus();   // set keyboard focus
+
+    lightboxImg.src = myImgs[index];    // display selected image
+    currentIndex = index;
+
+    showImageName(index);   // update image description
+    showCurrentImg();   // update counter and displayed image
 };
 
 
 
-// seperate Funktion für einen "schönen" Namen, um lightboxPicker() übersichtlich zu halten
+// show image name in header
 function showImageName(index) {
 
     let imgDescription = document.getElementById("img-description");
@@ -88,17 +91,33 @@ function showImageName(index) {
     imgDescription.innerHTML = imgName.charAt(0).toUpperCase() + imgName.slice(1);
 
 };
-function closeBtn () {
-const closeBtn = document.getElementById("closeButtonLightbox");
-closeBtn.addEventListener("click", function () {
-    
+function closeBtn() {
+    const closeBtn = document.getElementById("closeButtonLightbox");
+    closeBtn.addEventListener("click", function () {
+
         lightbox.close();
-    
-});
+
+    });
 };
+// return focus
+lightbox.addEventListener("close", function() {
+    if (lastFocusedButton) {
+        lastFocusedButton.focus();
+    }
+});
+
+// close lightbox when clicking on the backdrop
+lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
+        lightbox.close();
+    }
+});
 
 
-// Funktion für das aktualisieren des Imgs in der Lightbox
+
+
+
+// update current image and counter in lightbox
 function showCurrentImg() {
 
     let counter = document.getElementById("img-counter");
@@ -122,9 +141,9 @@ function showCurrentImg() {
     counter.innerHTML = (currentIndex + 1) + " / " + myImgs.length;
 };
 
-// Funktion für Pfeiltasten
+// navigate with arrow keys
 
-lightbox.addEventListener("keydown", function (event){
+lightbox.addEventListener("keydown", function (event) {
     if (event.key === "ArrowRight") {
         next();
     }
@@ -136,7 +155,7 @@ lightbox.addEventListener("keydown", function (event){
 
 function next() {
     currentIndex++;
-    if (currentIndex === myImgs.length - 1) {
+    if (currentIndex >= myImgs.length) {
         currentIndex = 0
     }
     showCurrentImg();
@@ -149,4 +168,5 @@ function previous() {
     }
     showCurrentImg();
 };
+
 
