@@ -329,6 +329,7 @@ main {
 
     .close-btn {
         height: 27px;
+        width: 27px;
     }
 
     .lightbox-main img {
@@ -388,6 +389,7 @@ main {
 
     .main-section-img {
         padding: 0 25px;
+        height: 100vh;
     }
 
     .lightbox_outer_box {
@@ -420,5 +422,17 @@ main {
     .logo {
         display: flex;
         justify-content: center;
+    }
+
+    #img-description {
+        font-size: 20px;
+    }
+
+    .button {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

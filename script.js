@@ -15,51 +15,39 @@ let myImgs = ['antarctica.jpg', // Array of image filenames
 
 let currentIndex = 0;   // tracks currently displayed image in lightbox
 let lightbox = document.getElementById("lightbox"); // reference to the dialog element
-
-
-
+let lastFocusedButton;
 
 window.onload = function () {
-
     generateImgs(); // create image elements in the gallery
     lightboxPicker(); // add click + keyboard (Enter) listeners to images
     closeBtn(); // set up close button listener
 };
 
 function generateImgs() {
-
     let container = document.getElementById("content");
-     
-
     // create figure + button + img for each image
+    for (let i = 0; i < myImgs.length; i++) {
+        let capitalizedName = myImgs[i].replace(".jpg", "");
+        capitalizedName = capitalizedName.charAt(0).toUpperCase() + capitalizedName.slice(1);
 
-   for (let i = 0; i < myImgs.length; i++) {
-    let capitalizedName = myImgs[i].replace(".jpg", "");
-    capitalizedName = capitalizedName.charAt(0).toUpperCase() + capitalizedName.slice(1);
-
-    container.innerHTML += `
+        container.innerHTML += `
         <figure class="img_container">
             <button class="column" aria-label="Open image ${capitalizedName}">
                 <img src="./img/${myImgs[i]}" alt="${capitalizedName}">
             </button>
         </figure>
     `;
-}
+    }
 };
 
 
 function lightboxPicker() {
     let content = document.getElementById("content");
     let showedImgs = content.getElementsByTagName("img");
-
     for (let i = 0; i < showedImgs.length; i++) {
         let parentButton = showedImgs[i].parentElement;
-
-        // click on image opens lightbox
-        parentButton.addEventListener("click", () => openLightbox(i));
-
-         // pressing Enter while focused on image opens lightbox
-        parentButton.addEventListener("keydown", (event) => {
+        parentButton.addEventListener("click", () => openLightbox(i));   // click on image opens lightbox
+        parentButton.addEventListener("keydown", (event) => {   // pressing Enter while focused on image opens lightbox
             if (event.key === "Enter") {
                 openLightbox(i);
             };
@@ -67,19 +55,15 @@ function lightboxPicker() {
     };
 };
 
-let lastFocusedButton;
+
 
 function openLightbox(index) {
     lastFocusedButton = document.getElementById("img-lightbox"); //save the focus
-
     let lightboxImg = document.getElementById("img-lightbox");
-
     lightbox.showModal();   // show dialog
     lightbox.focus();   // set keyboard focus
-
     lightboxImg.src = myImgs[index];    // display selected image
     currentIndex = index;
-
     showImageName(index);   // update image description
     showCurrentImg();   // update counter and displayed image
 };
@@ -95,16 +79,17 @@ function showImageName(index) {
     imgDescription.innerHTML = imgName.charAt(0).toUpperCase() + imgName.slice(1);
 
 };
+
+// Closebutton
 function closeBtn() {
     const closeBtn = document.getElementById("closeButtonLightbox");
     closeBtn.addEventListener("click", function () {
-
         lightbox.close();
-
     });
 };
+
 // return focus
-lightbox.addEventListener("close", function() {
+lightbox.addEventListener("close", function () {
     if (lastFocusedButton) {
         lastFocusedButton.focus();
     }
@@ -123,12 +108,8 @@ lightbox.addEventListener("click", function (event) {
 
 // update current image and counter in lightbox
 function showCurrentImg() {
-
     let counter = document.getElementById("img-counter");
     let lightboxImg = document.getElementById("img-lightbox");
-
-
-
     if (currentIndex >= myImgs.length) {
         currentIndex = 0;
         console.log(currentIndex);
@@ -137,11 +118,8 @@ function showCurrentImg() {
         currentIndex = myImgs.length - 1;
         console.log(currentIndex);
     };
-
     lightboxImg.src = "./img/" + myImgs[currentIndex];
-
     showImageName(currentIndex);
-
     counter.innerHTML = (currentIndex + 1) + " / " + myImgs.length;
 };
 
@@ -156,7 +134,7 @@ lightbox.addEventListener("keydown", function (event) {
     }
 });
 
-
+//go to the next picture
 function next() {
     currentIndex++;
     if (currentIndex >= myImgs.length) {
@@ -164,7 +142,7 @@ function next() {
     }
     showCurrentImg();
 };
-
+//go to the previous picture
 function previous() {
     currentIndex--;
     if (currentIndex < 0) {
