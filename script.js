@@ -12,7 +12,6 @@ let myImgs = ['antarctica.jpg', // Array of image filenames
     'tree.jpg'
 ];
 
-
 let currentIndex = 0;   // tracks currently displayed image in lightbox
 let lightbox = document.getElementById("lightbox"); // reference to the dialog element
 let lastFocusedButton;
@@ -40,7 +39,6 @@ function generateImgs() {
     }
 };
 
-
 function lightboxPicker() {
     let content = document.getElementById("content");
     let showedImgs = content.getElementsByTagName("img");
@@ -55,8 +53,6 @@ function lightboxPicker() {
     };
 };
 
-
-
 function openLightbox(index) {
     lastFocusedButton = document.getElementById("img-lightbox"); //save the focus
     let lightboxImg = document.getElementById("img-lightbox");
@@ -68,8 +64,6 @@ function openLightbox(index) {
     showImageName(index);   // update image description
     showCurrentImg();   // update counter and displayed image
 };
-
-
 
 // show image name in header
 function showImageName(index) {
@@ -103,10 +97,6 @@ lightbox.addEventListener("click", function (event) {
     }
 });
 
-
-
-
-
 // update current image and counter in lightbox
 function showCurrentImg() {
     let counter = document.getElementById("img-counter");
@@ -125,7 +115,6 @@ function showCurrentImg() {
 };
 
 // navigate with arrow keys
-
 lightbox.addEventListener("keydown", function (event) {
     if (event.key === "ArrowRight") {
         next();
@@ -143,6 +132,7 @@ function next() {
     }
     showCurrentImg();
 };
+
 //go to the previous picture
 function previous() {
     currentIndex--;
